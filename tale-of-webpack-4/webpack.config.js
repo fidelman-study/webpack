@@ -2,6 +2,7 @@ const path = require('path');
 // const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 module.exports = {
   entry: { main: './src/index.js' },
@@ -24,12 +25,14 @@ module.exports = {
           'style-loader',
           MiniCssExtractPlugin.loader,
           'css-loader',
+          'postcss-loader',
           'sass-loader'
         ]
       }
     ]
   },
-  plugins: [ 
+  plugins: [
+    new CleanWebpackPlugin('dist', {} ),
     // new ExtractTextPlugin({
     //   filename: 'style.[hash].css',
     //   disable: false,
